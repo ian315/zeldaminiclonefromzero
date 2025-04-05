@@ -32,9 +32,23 @@ public class Game extends Canvas implements Runnable, KeyListener {
         enemies.add(new EnemyRed(500, 420));
     }
 
+    public static void main(String[] args) {
+        Game game = new Game();
+
+        JFrame frame =  new JFrame();
+        frame.add(game);
+        frame.setTitle("ZELDA MINI CLONE");
+        frame.pack();
+        frame.setLocationRelativeTo(null);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setVisible(true);
+
+        new Thread(game).start();
+    }
+
     public void tick() {
         player.processPlayerLogic();
-        for(EnemyRed enemy : enemies) {
+        for (EnemyRed enemy : enemies) {
             enemy.processEnemyLogic();
         }
     }
@@ -59,20 +73,6 @@ public class Game extends Canvas implements Runnable, KeyListener {
             enemy.render(graphics);
         }
         bs.show();
-    }
-
-    public static void main(String[] args) {
-        Game game = new Game();
-
-        JFrame frame =  new JFrame();
-        frame.add(game);
-        frame.setTitle("ZELDA MINI CLONE");
-        frame.pack();
-        frame.setLocationRelativeTo(null);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setVisible(true);
-
-        new Thread(game).start();
     }
 
     // Metodo para rodar a 60FPS

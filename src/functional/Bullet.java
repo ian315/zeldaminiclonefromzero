@@ -20,15 +20,15 @@ public class Bullet extends Rectangle {
     public void tick() {
         x += speed * dir;
         frames++;
-        if(frames == 60) {
+        if (frames == 60) {
             Player.bullets.remove(this);
         }
 
         currentFrames++;
-        if(currentFrames == targetFrames){
+        if (currentFrames == targetFrames){
             currentFrames = 0;
             currentAnimation++;
-            if(currentAnimation == SpriteSheet.bulletSheet.get("bullet").length){
+            if (currentAnimation == SpriteSheet.bulletSheet.get("bullet").length){
                 currentAnimation = 0;
             }
         }
